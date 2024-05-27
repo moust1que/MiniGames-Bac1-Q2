@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class OryxMovement : MonoBehaviour
 {
+
     [SerializeField] private Vector3 vitesse;
   
     private void Start()
@@ -16,9 +17,9 @@ public class OryxMovement : MonoBehaviour
 
     void Update()
     {
-        transform.position = transform.position + new Vector3(UnityEngine.Random.Range(-500.0f, 300.0f), UnityEngine.Random.Range(-500.0f, 300.0f), 0) * Time.deltaTime;
+        // transform.position = transform.position + new Vector3(UnityEngine.Random.Range(-500.0f, 300.0f), UnityEngine.Random.Range(-500.0f, 300.0f), 0) * Time.deltaTime;
 
-        // transform.position = transform.position + vitesse * Time.deltaTime;
+        transform.position = transform.position + vitesse * Time.deltaTime;
 
     }
 }
