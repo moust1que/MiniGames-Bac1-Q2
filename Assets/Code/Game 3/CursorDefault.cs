@@ -1,16 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class CursorDefault : MonoBehaviour
-{
+public class CursorDefault : MonoBehaviour {
     [SerializeField] private Texture2D m_CursorTexture;
+	[SerializeField] private CursorMode m_CursorMode = CursorMode.Auto;
+	[SerializeField] private Vector2 m_Hotspot = new Vector2(0.0f, 32.0f);
 
-    private void Start()
-    {
-        Cursor.SetCursor(m_CursorTexture, new Vector2(0.0f, 1.0f), CursorMode.Auto);
+    private void Start() {
+        Cursor.SetCursor(m_CursorTexture, m_Hotspot, m_CursorMode);
     }
-
 }
