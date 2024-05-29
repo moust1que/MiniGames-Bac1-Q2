@@ -5,12 +5,12 @@ using UnityEngine;
 public class Chrono : MonoBehaviour {
 	[SerializeField] private TextMeshProUGUI m_TimerText;
 	[SerializeField] private float m_Time;
+	[SerializeField] private GameManager m_GameManager;
 
 	private Coroutine m_TimeCoroutine;
 
 	private void Start() {
 		ToMinutesAndSeconds();
-		StartCoroutine(TimeCoroutine());
 	}
 
 	private void ToMinutesAndSeconds() {
@@ -34,9 +34,14 @@ public class Chrono : MonoBehaviour {
 		m_Time--;
 		ToMinutesAndSeconds();
 
-		if(m_Time == 0)
+		if(m_Time == 0) {
 			StopCoroutine(m_TimeCoroutine);
-		else
+			m_GameManager.EndGame();
+		}else
 			m_TimeCoroutine = StartCoroutine(TimeCoroutine());
+	}
+
+	public void StartChrono() {
+		StartCoroutine(TimeCoroutine());
 	}
 }

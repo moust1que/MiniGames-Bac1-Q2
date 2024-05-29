@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIFireAnim : MonoBehaviour {
+public class UISpriteAnim : MonoBehaviour {
 	[SerializeField] private Image m_Image;
 
 	[SerializeField] private Sprite[] m_SpriteArray;

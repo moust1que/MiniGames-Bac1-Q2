@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CursorDefault : MonoBehaviour {
+public class CursorOnScreen : MonoBehaviour {
     [SerializeField] private Texture2D m_CursorTexture;
 	[SerializeField] private CursorMode m_CursorMode = CursorMode.Auto;
 	[SerializeField] private Vector2 m_Hotspot = new Vector2(0.0f, 32.0f);
