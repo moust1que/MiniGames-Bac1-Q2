@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 241085302671936510}
   - component: {fileID: 6213626233539716063}
   - component: {fileID: 2756001510950616071}
+  - component: {fileID: 6360718098535564656}
   m_Layer: 5
   m_Name: BatLeftPrefab
   m_TagString: Untagged
@@ -28,7 +29,7 @@ RectTransform:
   m_GameObject: {fileID: 5167582439526549372}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -89,6 +90,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77906c878e38e2549b36cfed81dc817d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vitesse: {x: 300, y: 0, z: 0}
-  m_VerticalDisplacement: 20
-  m_VerticalSpeed: 50
+  m_Speed: 1
+  m_VerticalDisplacement: 1
+  m_VerticalSpeed: 1
+--- !u!114 &6360718098535564656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5167582439526549372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fea7a5800048b3747a985522942b0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Items:
+  - {fileID: 2108217204271385210, guid: cb19f1229b3513949bd198a924080ab7, type: 3}
+  - {fileID: 6372626987271209841, guid: 89a5623bc29f8a64e9861d34a473e184, type: 3}
