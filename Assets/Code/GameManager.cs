@@ -24,7 +24,18 @@ public class GameManager : MonoBehaviour {
 	public int m_Score = 30;
 	private int m_Cpt = 0;
 
-    private void Start() {
+	[SerializeField] GameObject m_Pause;
+	private bool m_IsGamePaused = false;
+	[SerializeField] private GameObject m_Options;
+
+	[SerializeField] private AudioSource m_Fire;
+	[SerializeField] private AudioSource m_Victory;
+	[SerializeField] private AudioSource m_Defeat;
+	[SerializeField] private AudioSource m_Ambiance;
+	[SerializeField] private AudioSource m_Timer;
+	[SerializeField] private AudioSource m_Pop;
+
+	private void Start() {
 		Time.timeScale = 1;
 		m_Character.color = new Color(255, 255, 255, 0);
 		m_Character.enabled = true;
@@ -57,6 +68,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private IEnumerator PlayIntro() {
+		m_Pop.Play();
 		m_Image.sprite = m_IntroText[m_Cpt];
 		StartCoroutine(SpawnAnim(m_Image, m_FadeMultiplicator, m_PlayRate / 4.0f));
 		m_Cpt++;
@@ -79,18 +91,53 @@ public class GameManager : MonoBehaviour {
 	private void FixedUpdate() {
 		if(m_Score == 0 || m_Score == 100)
 			EndGame();
+
+		if(m_Score == 0)
+			m_Fire.Stop();
 	}
 
 	public void EndGame() {
-		if(m_Score >= 60)
+		m_Ambiance.Stop();
+		m_Timer.Stop();
+		if(m_Score >= 60) {
 			ShowScreen(0);
-		else
+			m_Victory.Play();
+		}else {
 			ShowScreen(1);
+			m_Defeat.Play();
+		}
 		
 		Time.timeScale = 0;
 	}
 
 	private void ShowScreen(int screen) {
 		m_Screens[screen].SetActive(true);
+	}
+
+	private void Update() {
+		if(Input.GetKeyDown(KeyCode.Escape)) {
+			if(m_IsGamePaused)
+				ContinueGame();
+			else
+				PauseGame();
+		}
+	}
+
+	public void ContinueGame() {
+		if(!m_Options.activeInHierarchy) {
+			Time.timeScale = 1;
+			m_Pause.SetActive(false);
+			GameObject.Find("UI").GetComponent<CursorOnScreen>().SetupCursor();
+			m_IsGamePaused = false;
+		}
+	}
+
+	private void PauseGame() {
+		if(!m_Screens[0].activeInHierarchy && !m_Screens[1].activeInHierarchy) {
+			Time.timeScale = 0;
+			m_Pause.SetActive(true);
+			GameObject.Find("PauseUI").GetComponent<CursorOnScreen>().SetupCursor();
+			m_IsGamePaused = true;
+		}
 	}
 }

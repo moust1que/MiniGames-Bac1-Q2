@@ -6,6 +6,10 @@ public class CursorOnScreen : MonoBehaviour {
 	[SerializeField] private Vector2 m_Hotspot = new Vector2(0.0f, 32.0f);
 
     private void Start() {
-        Cursor.SetCursor(m_CursorTexture, m_Hotspot, m_CursorMode);
+        SetupCursor();
     }
+
+	public void SetupCursor() {
+        Cursor.SetCursor(m_CursorTexture, m_Hotspot, m_CursorMode);
+	}
 }

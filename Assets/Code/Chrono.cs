@@ -6,6 +6,7 @@ public class Chrono : MonoBehaviour {
 	[SerializeField] private TextMeshProUGUI m_TimerText;
 	[SerializeField] private float m_Time;
 	[SerializeField] private GameManager m_GameManager;
+	[SerializeField] private AudioSource m_Timer;
 
 	private Coroutine m_TimeCoroutine;
 
@@ -43,5 +44,10 @@ public class Chrono : MonoBehaviour {
 
 	public void StartChrono() {
 		StartCoroutine(TimeCoroutine());
+	}
+
+	private void FixedUpdate() {
+		if(m_Time == 10)
+			m_Timer.Play();
 	}
 }
