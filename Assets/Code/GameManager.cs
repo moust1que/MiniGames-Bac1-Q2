@@ -29,6 +29,9 @@ public class GameManager : MonoBehaviour {
 	private bool m_IsGamePaused = false;
 	[SerializeField] private GameObject m_Options;
 
+	[SerializeField] private Texture2D m_DefaultCursor;
+	[SerializeField] private Texture2D m_MenuCursor;
+
 	private void Start() {
 		Time.timeScale = 1;
 		m_Character.color = new Color(255, 255, 255, 0);
@@ -98,7 +101,7 @@ public class GameManager : MonoBehaviour {
 		if(!m_Options.activeInHierarchy) {
 			Time.timeScale = 1;
 			m_Pause.SetActive(false);
-			GameObject.Find("UI").GetComponent<CursorOnScreen>().SetupCursor();
+			GameObject.Find("UI").GetComponent<CursorOnScreen>().SetupCursor(m_DefaultCursor);
 			m_IsGamePaused = false;
 		}
 	}
@@ -107,7 +110,7 @@ public class GameManager : MonoBehaviour {
 		if(!m_Screens[0].activeInHierarchy && !m_Screens[1].activeInHierarchy) {
 			Time.timeScale = 0;
 			m_Pause.SetActive(true);
-			GameObject.Find("PauseUI").GetComponent<CursorOnScreen>().SetupCursor();
+			GameObject.Find("PauseUI").GetComponent<CursorOnScreen>().SetupCursor(m_MenuCursor);
 			m_IsGamePaused = true;
 		}
 	}
