@@ -38,6 +38,7 @@ public class GM_Game1 : MonoBehaviour {
 	public void EndGame() {
 		m_Ambiance.Stop();
 		m_Timer.Stop();
+
 		if(m_Score >= 60) {
 			m_GameManager.ShowScreen(0);
 			m_Victory.Play();
