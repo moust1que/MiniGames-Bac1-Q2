@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 public class ScoreDisplay : MonoBehaviour {
-	[SerializeField] private GameManager m_GameManager;
+	[SerializeField] private GM_Game1 m_GM;
 
 	private Vector3 m_SelfScale;
 
@@ -18,6 +18,6 @@ public class ScoreDisplay : MonoBehaviour {
 	}
 
 	private float SetScaleX() {
-		return (float) m_GameManager.m_Score / 100.0f;
+		return (float) m_GM.m_Score / 100.0f;
 	}
 }

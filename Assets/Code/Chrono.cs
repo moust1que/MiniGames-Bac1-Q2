@@ -5,7 +5,7 @@ using UnityEngine;
 public class Chrono : MonoBehaviour {
 	[SerializeField] private TextMeshProUGUI m_TimerText;
 	[SerializeField] private float m_Time;
-	[SerializeField] private GameManager m_GameManager;
+	[SerializeField] private GM_Game1 m_GM;
 	[SerializeField] private AudioSource m_Timer;
 
 	private Coroutine m_TimeCoroutine;
@@ -37,7 +37,7 @@ public class Chrono : MonoBehaviour {
 
 		if(m_Time == 0) {
 			StopCoroutine(m_TimeCoroutine);
-			m_GameManager.EndGame();
+			m_GM.EndGame();
 		}else
 			m_TimeCoroutine = StartCoroutine(TimeCoroutine());
 	}

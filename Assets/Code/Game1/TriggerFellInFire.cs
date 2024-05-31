@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TriggerFellInFire : MonoBehaviour {
-	[SerializeField] private GameManager m_GameManager;
+	[SerializeField] private GM_Game1 m_GM;
 	[SerializeField] private AudioSource m_Burn;
 	[SerializeField] private AudioSource m_FireLvlUp;
 	[SerializeField] private AudioSource m_FireLvlUp2;
@@ -18,14 +18,14 @@ public class TriggerFellInFire : MonoBehaviour {
 			m_Item.GetComponent<ItemFall>().StopFall();
 			m_Item.transform.SetParent(null);
 				
-			if(m_Item.name.Contains("pierre") && m_GameManager.m_Score >= 10) {
+			if(m_Item.name.Contains("pierre") && m_GM.m_Score >= 10) {
 				m_RockFall.Play();
-				m_GameManager.m_Score -= 10;
-			}else if(m_Item.name.Contains("branche") && m_GameManager.m_Score <= 90) {
+				m_GM.m_Score -= 10;
+			}else if(m_Item.name.Contains("branche") && m_GM.m_Score <= 90) {
 				m_FireLvlUp.Play();
 				m_FireLvlUp2.Play();
 				m_StickFall.Play();
-				m_GameManager.m_Score += 10;
+				m_GM.m_Score += 10;
 			}
 				
 			m_Burn.Play();

@@ -453,6 +453,58 @@ RectTransform:
   m_AnchoredPosition: {x: 190, y: -63}
   m_SizeDelta: {x: 309, y: 88}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &115968014
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 115968016}
+  - component: {fileID: 115968015}
+  m_Layer: 0
+  m_Name: GM_Game1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &115968015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115968014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d388e14bb665b9846bcf77271c8d767a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_GameManager: {fileID: 768777200}
+  m_ToSpawn: {fileID: 222335045}
+  m_Fire: {fileID: 708720055}
+  m_Victory: {fileID: 932728216}
+  m_Defeat: {fileID: 278814485}
+  m_Ambiance: {fileID: 424672411}
+  m_Timer: {fileID: 821134606}
+  m_Score: 30
+--- !u!4 &115968016
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115968014}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 782.2104, y: 615.8689, z: 5.746627}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &213709429
 GameObject:
   m_ObjectHideFlags: 0
@@ -1621,7 +1673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 250a5b216038fce49832f07a79c7377f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_GameManager: {fileID: 768777200}
+  m_GM: {fileID: 115968015}
 --- !u!1 &567358856
 GameObject:
   m_ObjectHideFlags: 0
@@ -2028,7 +2080,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5bb4634a885af74d9ce9cdc269b1e90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_GameManager: {fileID: 768777200}
+  m_GM: {fileID: 115968015}
 --- !u!1 &708720053
 GameObject:
   m_ObjectHideFlags: 0
@@ -2726,20 +2778,14 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e9f8414f9ff3e1748a4b9f42b5cf01c3, type: 3}
   m_Chrono: {fileID: 1698481915}
   m_Image: {fileID: 1365400331}
-  m_ToSpawn: {fileID: 222335045}
   m_EndScreen: {fileID: 12563340}
   m_Screens:
   - {fileID: 8177140343294291817}
   - {fileID: 6247604100934807893}
-  m_Score: 30
+  m_Pop: {fileID: 98725596}
+  m_Cpt: 0
   m_Pause: {fileID: 1720476463}
   m_Options: {fileID: 1824361705}
-  m_Fire: {fileID: 708720055}
-  m_Victory: {fileID: 932728216}
-  m_Defeat: {fileID: 278814485}
-  m_Ambiance: {fileID: 424672411}
-  m_Timer: {fileID: 821134606}
-  m_Pop: {fileID: 98725596}
 --- !u!4 &768777201
 Transform:
   m_ObjectHideFlags: 0
@@ -3403,7 +3449,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 9463.495
+  m_Mass: 2365.8738
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -5478,7 +5524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7e22bdc193ce3c4299cc0e4fc0f9bee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_GameManager: {fileID: 768777200}
+  m_GM: {fileID: 115968015}
   m_Burn: {fileID: 2067295551}
   m_FireLvlUp: {fileID: 731797565}
   m_FireLvlUp2: {fileID: 1665172638}
@@ -5878,7 +5924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5bb4634a885af74d9ce9cdc269b1e90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_GameManager: {fileID: 768777200}
+  m_GM: {fileID: 115968015}
 --- !u!1 &1593797476
 GameObject:
   m_ObjectHideFlags: 0
@@ -6586,7 +6632,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TimerText: {fileID: 1698481913}
   m_Time: 30
-  m_GameManager: {fileID: 768777200}
+  m_GM: {fileID: 115968015}
   m_Timer: {fileID: 821134606}
 --- !u!1 &1720476463
 GameObject:

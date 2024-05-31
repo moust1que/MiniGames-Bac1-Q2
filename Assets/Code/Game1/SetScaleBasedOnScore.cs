@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SetScaleBasedOnScore : MonoBehaviour {
-	[SerializeField] private GameManager m_GameManager;
+	[SerializeField] private GM_Game1 m_GM;
 
 	private void FixedUpdate() {
-		switch(m_GameManager.m_Score) {
+		switch(m_GM.m_Score) {
 			case 0:
 				SetScale(0.0f);
 				break;

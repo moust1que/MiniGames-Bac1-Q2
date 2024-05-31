@@ -9,31 +9,25 @@ public class GameManager : MonoBehaviour {
 	[SerializeField] private float m_FadeMultiplicator = 1.0f;
 	[Space, Header("Intro Text Settings")]
 	[SerializeField] private float m_PlayRate = 1.0f;
-	[SerializeField] private Sprite[] m_IntroText;
+	[SerializeField] public Sprite[] m_IntroText;
 	[Space, Header("Init Gameplay Settings")]
 	[SerializeField] private Chrono m_Chrono;
 	[SerializeField] private Image m_Image;
-	[SerializeField] private ToSpawn m_ToSpawn;
 	[Space, Header("End Screen Settings")]
 	[SerializeField] private GameObject m_EndScreen;
 	[SerializeField] private GameObject[] m_Screens;
+	
+	[SerializeField] private AudioSource m_Pop;
 
 	private Coroutine m_SpawnCharacterCoroutine;
 	private Coroutine m_IntroCoroutine;
 
-	public int m_Score = 30;
-	private int m_Cpt = 0;
+	[HideInInspector]
+	public int m_Cpt = 0;
 
 	[SerializeField] GameObject m_Pause;
 	private bool m_IsGamePaused = false;
 	[SerializeField] private GameObject m_Options;
-
-	[SerializeField] private AudioSource m_Fire;
-	[SerializeField] private AudioSource m_Victory;
-	[SerializeField] private AudioSource m_Defeat;
-	[SerializeField] private AudioSource m_Ambiance;
-	[SerializeField] private AudioSource m_Timer;
-	[SerializeField] private AudioSource m_Pop;
 
 	private void Start() {
 		Time.timeScale = 1;
@@ -85,32 +79,9 @@ public class GameManager : MonoBehaviour {
 
 	private void StartGame() {
 		m_Chrono.StartChrono();
-		m_ToSpawn.StartSpawn();
 	}
 
-	private void FixedUpdate() {
-		if(m_Score == 0 || m_Score == 100)
-			EndGame();
-
-		if(m_Score == 0)
-			m_Fire.Stop();
-	}
-
-	public void EndGame() {
-		m_Ambiance.Stop();
-		m_Timer.Stop();
-		if(m_Score >= 60) {
-			ShowScreen(0);
-			m_Victory.Play();
-		}else {
-			ShowScreen(1);
-			m_Defeat.Play();
-		}
-		
-		Time.timeScale = 0;
-	}
-
-	private void ShowScreen(int screen) {
+	public void ShowScreen(int screen) {
 		m_Screens[screen].SetActive(true);
 	}
 
