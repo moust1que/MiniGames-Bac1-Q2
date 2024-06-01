@@ -89,7 +89,13 @@ public class GameManager : MonoBehaviour {
 
 	private void StartGame() {
 		m_Chrono.StartChrono();
-		m_GM1.StartGame();
+
+		if(m_GM1)
+			m_GM1.StartGame();
+		else if(m_GM2)
+			m_GM2.StartGame();
+		else if(m_GM3)
+			m_GM3.StartGame();
 	}
 
 	public void ShowScreen(int screen) {
