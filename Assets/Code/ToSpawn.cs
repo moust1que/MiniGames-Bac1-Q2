@@ -6,7 +6,7 @@ public class ToSpawn : MonoBehaviour {
     [SerializeField] private GameObject[] m_ToSpawnPrefab;
     [SerializeField] private float m_SpawnRate = 2.0f;
 	[SerializeField] private GameObject[] m_Paths;
-	[SerializeField] private Vector2[] m_Sizes;
+	[SerializeField] private Vector2 m_Sizes;
 
 	private Coroutine m_SpawnCoroutine;
 	private Coroutine m_DestroyCoroutine;
@@ -47,7 +47,7 @@ public class ToSpawn : MonoBehaviour {
 	}
 
 	private Vector2 SetSize() {
-		Vector2 size = new Vector2(Screen.width * 0.13f, Screen.height * 0.13f);
+		Vector2 size = new Vector2(Screen.width * m_Sizes.x, Screen.height * m_Sizes.y);
 
 		return size;
 	}

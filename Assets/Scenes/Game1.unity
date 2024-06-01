@@ -633,9 +633,7 @@ MonoBehaviour:
   m_Paths:
   - {fileID: 2090380163}
   - {fileID: 22770054}
-  m_Sizes:
-  - {x: 2048, y: 1425}
-  - {x: 2048, y: 1425}
+  m_Sizes: {x: 0.13, y: 0.13}
 --- !u!1 &230715066
 GameObject:
   m_ObjectHideFlags: 0
