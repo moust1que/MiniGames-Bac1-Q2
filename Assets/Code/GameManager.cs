@@ -1,6 +1,4 @@
 using System.Collections;
-using System.ComponentModel;
-using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -91,6 +89,7 @@ public class GameManager : MonoBehaviour {
 
 	private void StartGame() {
 		m_Chrono.StartChrono();
+		m_GM1.StartGame();
 	}
 
 	public void ShowScreen(int screen) {

@@ -12,14 +12,7 @@ public class GM_Game1 : MonoBehaviour {
 	
 	public int m_Score = 30;
 
-	private bool m_Spawning = false;
-
 	private void FixedUpdate() {
-		if(m_GameManager.m_Cpt >= m_GameManager.m_IntroText.Length && !m_Spawning) {
-			m_Spawning = true;
-			StartGame();
-		}
-
 		if(m_Score == 0 || m_Score == 100)
 			m_GameManager.EndGame();
 
@@ -27,7 +20,7 @@ public class GM_Game1 : MonoBehaviour {
 			m_Fire.Stop();
 	}
 
-	private void StartGame() {
+	public void StartGame() {
 		m_ToSpawn.StartSpawn();
 	}
 
