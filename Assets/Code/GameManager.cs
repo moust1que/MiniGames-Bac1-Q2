@@ -1,9 +1,20 @@
 using System.Collections;
+using System.ComponentModel;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
-	[Header("Character Settings")]
+	[Header("GameMode Settings")]
+	[SerializeField] private int m_CurrentGame;
+	[SerializeField] private GM_Game1 m_GM1;
+	[SerializeField] private GM_Game2 m_GM2;
+	[SerializeField] private GM_Game3 m_GM3;
+	[SerializeField] private GameObject m_Pause;
+	[SerializeField] private GameObject m_Options;
+	[SerializeField] private Texture2D m_DefaultCursor;
+	[SerializeField] private Texture2D m_MenuCursor;
+	[Space, Header("Character Settings")]
 	[SerializeField] private Image m_Character;
 	[SerializeField] private float m_FadeRate;
 	[SerializeField] private float m_FadeMultiplicator = 1.0f;
@@ -16,21 +27,19 @@ public class GameManager : MonoBehaviour {
 	[Space, Header("End Screen Settings")]
 	[SerializeField] private GameObject m_EndScreen;
 	[SerializeField] private GameObject[] m_Screens;
-	
+	[Space, Header("Sounds Settings")]
 	[SerializeField] private AudioSource m_Pop;
+	[SerializeField] private AudioSource m_Ambiance;
+	[SerializeField] private AudioSource m_Timer;
+	[SerializeField] private AudioSource m_Victory;
+	[SerializeField] private AudioSource m_Defeat;
 
 	private Coroutine m_SpawnCharacterCoroutine;
 	private Coroutine m_IntroCoroutine;
 
-	[HideInInspector]
-	public int m_Cpt = 0;
+	[HideInInspector] public int m_Cpt = 0;
 
-	[SerializeField] GameObject m_Pause;
 	private bool m_IsGamePaused = false;
-	[SerializeField] private GameObject m_Options;
-
-	[SerializeField] private Texture2D m_DefaultCursor;
-	[SerializeField] private Texture2D m_MenuCursor;
 
 	private void Start() {
 		Time.timeScale = 1;
@@ -113,5 +122,34 @@ public class GameManager : MonoBehaviour {
 			GameObject.Find("PauseUI").GetComponent<CursorOnScreen>().SetupCursor(m_MenuCursor);
 			m_IsGamePaused = true;
 		}
+	}
+
+	public void EndGame() {
+		bool winCondition = false;
+
+		m_Ambiance.Stop();
+		m_Timer.Stop();
+		
+		switch(m_CurrentGame) {
+			case 1:
+				winCondition = m_GM1.WinOrLose();
+			break;
+			case 2:
+				winCondition = m_GM1.WinOrLose();
+			break;
+			case 3:
+				winCondition = m_GM3.WinOrLose();
+			break;
+		}
+
+		if(winCondition) {
+			ShowScreen(0);
+			m_Victory.Play();
+		}else {
+			ShowScreen(1);
+			m_Defeat.Play();
+		}
+
+		Time.timeScale = 0;
 	}
 }

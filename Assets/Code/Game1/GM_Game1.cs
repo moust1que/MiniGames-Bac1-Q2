@@ -9,10 +9,6 @@ public class GM_Game1 : MonoBehaviour {
 	[SerializeField] private ToSpawn m_ToSpawn;
 	[Space, Header("Sounds")]
 	[SerializeField] private AudioSource m_Fire;
-	[SerializeField] private AudioSource m_Victory;
-	[SerializeField] private AudioSource m_Defeat;
-	[SerializeField] private AudioSource m_Ambiance;
-	[SerializeField] private AudioSource m_Timer;
 	
 	public int m_Score = 30;
 
@@ -25,7 +21,7 @@ public class GM_Game1 : MonoBehaviour {
 		}
 
 		if(m_Score == 0 || m_Score == 100)
-			EndGame();
+			m_GameManager.EndGame();
 
 		if(m_Score == 0)
 			m_Fire.Stop();
@@ -35,18 +31,10 @@ public class GM_Game1 : MonoBehaviour {
 		m_ToSpawn.StartSpawn();
 	}
 
-	public void EndGame() {
-		m_Ambiance.Stop();
-		m_Timer.Stop();
-
-		if(m_Score >= 60) {
-			m_GameManager.ShowScreen(0);
-			m_Victory.Play();
-		}else {
-			m_GameManager.ShowScreen(1);
-			m_Defeat.Play();
-		}
-		
-		Time.timeScale = 0;
+	public bool WinOrLose() {
+		if(m_Score >= 60)
+			return true;
+		else
+			return false;
 	}
 }

@@ -485,10 +485,6 @@ MonoBehaviour:
   m_GameManager: {fileID: 768777200}
   m_ToSpawn: {fileID: 222335045}
   m_Fire: {fileID: 708720055}
-  m_Victory: {fileID: 932728216}
-  m_Defeat: {fileID: 278814485}
-  m_Ambiance: {fileID: 424672411}
-  m_Timer: {fileID: 821134606}
   m_Score: 30
 --- !u!4 &115968016
 Transform:
@@ -2767,6 +2763,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06a82a884b48ad6468d6d61773ffab1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_CurrentGame: 1
+  m_GM1: {fileID: 115968015}
+  m_GM2: {fileID: 0}
+  m_GM3: {fileID: 0}
   m_Character: {fileID: 1242214819}
   m_FadeRate: 0.02
   m_FadeMultiplicator: 1.75
@@ -2783,6 +2783,10 @@ MonoBehaviour:
   - {fileID: 8177140343294291817}
   - {fileID: 6247604100934807893}
   m_Pop: {fileID: 98725596}
+  m_Ambiance: {fileID: 424672411}
+  m_Timer: {fileID: 821134606}
+  m_Victory: {fileID: 932728216}
+  m_Defeat: {fileID: 278814485}
   m_Cpt: 0
   m_Pause: {fileID: 1720476463}
   m_Options: {fileID: 1824361705}
@@ -6634,7 +6638,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TimerText: {fileID: 1698481913}
   m_Time: 30
-  m_GM: {fileID: 115968015}
+  m_GameManager: {fileID: 768777200}
   m_Timer: {fileID: 821134606}
 --- !u!1 &1720476463
 GameObject:
