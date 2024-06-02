@@ -27,7 +27,7 @@ public class GM_Game1 : MonoBehaviour {
 	public bool WinOrLose() {
 		if(m_Score >= 60)
 			return true;
-		else
-			return false;
+
+		return false;
 	}
 }

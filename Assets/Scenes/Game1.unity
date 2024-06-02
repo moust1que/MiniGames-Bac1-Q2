@@ -2771,7 +2771,7 @@ MonoBehaviour:
   m_Character: {fileID: 1242214819}
   m_FadeRate: 0.02
   m_FadeMultiplicator: 1.75
-  m_PlayRate: 3
+  m_PlayRate: 4
   m_IntroText:
   - {fileID: 21300000, guid: 581237d1a8c1e7a4f893683deafd82ef, type: 3}
   - {fileID: 21300000, guid: d1d83f186fdf62b469dee68b4e88fc40, type: 3}
@@ -3452,7 +3452,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 2365.8738
+  m_Mass: 9463.495
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0

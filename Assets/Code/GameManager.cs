@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour {
 	private IEnumerator PlayIntro() {
 		m_Pop.Play();
 		m_Image.sprite = m_IntroText[m_Cpt];
-		StartCoroutine(SpawnAnim(m_Image, m_FadeMultiplicator, m_PlayRate / 4.0f));
+		StartCoroutine(SpawnAnim(m_Image, m_FadeMultiplicator, m_PlayRate / 2.0f));
 		m_Cpt++;
 
 		yield return new WaitForSeconds(m_PlayRate);
@@ -140,7 +140,7 @@ public class GameManager : MonoBehaviour {
 				winCondition = m_GM1.WinOrLose();
 			break;
 			case 2:
-				winCondition = m_GM1.WinOrLose();
+				winCondition = m_GM2.WinOrLose();
 			break;
 			case 3:
 				winCondition = m_GM3.WinOrLose();
