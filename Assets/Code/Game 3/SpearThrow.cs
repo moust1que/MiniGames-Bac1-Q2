@@ -7,20 +7,23 @@ using UnityEngine.UIElements;
 
 public class SpearThrow : MonoBehaviour
 {
-    [SerializeField] private RectTransform m_Spear;
+    [SerializeField] private GameObject m_SpearPrefab;
     [SerializeField] private float m_SpearSpeed;
     [SerializeField] private GameObject m_Ui;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Vector2 m_Size;
-    [SerializeField] private GameObject m_LanceLayer;
+    [SerializeField] private RectTransform m_LanceLayer;
+    [SerializeField] private GameObject m_SpearP;
+    [SerializeField] Vector3 teste = new();
+    [SerializeField] private Vector3 targetPosition;
 
-    
+
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        m_SpearP.SetActive(true);
     }
 
     // Update is called once per frame
@@ -29,26 +32,40 @@ public class SpearThrow : MonoBehaviour
         // GameObject toSpawn = InstantiateToSpawn(m_LanceLayer);
     }
 
-
+    void FixedUpdate(){
+        if(m_SpearPrefab){
+            m_SpearPrefab.transform.position = teste;
+            m_SpearPrefab.transform.position = Vector3.Lerp(m_SpearPrefab.transform.position, targetPosition, m_SpearSpeed * Time.deltaTime);
+            Debug.Log("wsh " + m_SpearPrefab.transform.position);
+        }
+    }
 
     public void OnClick() {
         // transform.position = transform.position + mousePosition * SpearSpeed * Time.deltaTime;
 
         Vector3 mouseScreenPosition = Input.mousePosition;
-
-         Vector3 mouseViewportPosition = mainCamera.ScreenToViewportPoint(mouseScreenPosition);
+        targetPosition = mouseScreenPosition;
+       
          Debug.Log("c chouette" + mouseScreenPosition);
 
-         m_Spear.anchoredPosition = mouseScreenPosition;
-         Debug.Log(m_Spear.anchoredPosition);
-         InstantiateToSpawn();
-
+        m_SpearP.SetActive(false);
+         InstantiateToSpawn(mouseScreenPosition);
+         StartCoroutine(SpearCoroutine()); 
+             
     }
 
-    private RectTransform InstantiateToSpawn(){
-        
-        RectTransform toSpawn = Instantiate(m_Spear, m_Spear.anchoredPosition, Quaternion.identity);
+    IEnumerator SpearCoroutine(){
+        yield return new WaitForSeconds(1.5f);
+        m_SpearP.SetActive(true);
+    }
+
+    private GameObject InstantiateToSpawn(Vector3 mousePosition){
+         
+        GameObject toSpawn = Instantiate(m_SpearPrefab, teste, Quaternion.identity);
         toSpawn.transform.SetParent(m_Ui.transform);
+        toSpawn.GetComponent<RectTransform>().sizeDelta = SetSize();
+        // m_SpearPrefab.transform.position = mousePosition; 
+        
         return toSpawn;
     }
 
