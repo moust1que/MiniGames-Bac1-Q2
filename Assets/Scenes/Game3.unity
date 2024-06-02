@@ -4350,7 +4350,7 @@ GameObject:
   - component: {fileID: 1119120324}
   - component: {fileID: 1119120323}
   m_Layer: 0
-  m_Name: Main
+  m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4376,7 +4376,7 @@ RectTransform:
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.6471843, y: 0.72895336}
 --- !u!114 &1119120323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4397,6 +4397,8 @@ MonoBehaviour:
   m_LanceLayer: {fileID: 2061727198}
   m_SpearP: {fileID: 613575032}
   teste: {x: 0, y: 0, z: 0}
+  targetPosition: {x: 0, y: 0, z: 0}
+  m_SpearPosition: {fileID: 1119120321}
 --- !u!114 &1119120324
 MonoBehaviour:
   m_ObjectHideFlags: 0

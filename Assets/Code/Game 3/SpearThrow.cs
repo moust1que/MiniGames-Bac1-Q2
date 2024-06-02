@@ -16,6 +16,7 @@ public class SpearThrow : MonoBehaviour
     [SerializeField] private GameObject m_SpearP;
     [SerializeField] Vector3 teste = new();
     [SerializeField] private Vector3 targetPosition;
+    [SerializeField] private GameObject m_SpearPosition; 
 
 
 
@@ -34,8 +35,9 @@ public class SpearThrow : MonoBehaviour
 
     void FixedUpdate(){
         if(m_SpearPrefab){
-            m_SpearPrefab.transform.position = teste;
-            m_SpearPrefab.transform.position = Vector3.Lerp(m_SpearPrefab.transform.position, targetPosition, m_SpearSpeed * Time.deltaTime);
+            // m_SpearPrefab.transform.position = teste
+            // m_SpearPrefab.transform.position = Vector3.Lerp(m_SpearPrefab.transform.position, targetPosition, m_SpearSpeed * Time.deltaTime);
+            m_SpearPrefab.transform.position = m_SpearPrefab.transform.position + targetPosition * m_SpearSpeed * Time.deltaTime;
             Debug.Log("wsh " + m_SpearPrefab.transform.position);
         }
     }
@@ -44,7 +46,8 @@ public class SpearThrow : MonoBehaviour
         // transform.position = transform.position + mousePosition * SpearSpeed * Time.deltaTime;
 
         Vector3 mouseScreenPosition = Input.mousePosition;
-        targetPosition = mouseScreenPosition;
+        // targetPosition = mouseScreenPosition;
+        // targetPosition = mainCamera.ScreenToWorldPoint(new Vector3(mouseScreenPosition.x, mouseScreenPosition.y, mainCamera.nearClipPlane));
        
          Debug.Log("c chouette" + mouseScreenPosition);
 
@@ -60,8 +63,8 @@ public class SpearThrow : MonoBehaviour
     }
 
     private GameObject InstantiateToSpawn(Vector3 mousePosition){
-         
-        GameObject toSpawn = Instantiate(m_SpearPrefab, teste, Quaternion.identity);
+        Vector3 parentPos = m_SpearPosition.transform.position;
+        GameObject toSpawn = Instantiate(m_SpearPrefab, m_SpearPosition.transform.position, Quaternion.identity);
         toSpawn.transform.SetParent(m_Ui.transform);
         toSpawn.GetComponent<RectTransform>().sizeDelta = SetSize();
         // m_SpearPrefab.transform.position = mousePosition; 
@@ -71,7 +74,6 @@ public class SpearThrow : MonoBehaviour
 
     private Vector2 SetSize(){
         Vector2 size = new Vector2(Screen.width * m_Size.x, Screen.height * m_Size.y);
-
         return size;
     }
 }
