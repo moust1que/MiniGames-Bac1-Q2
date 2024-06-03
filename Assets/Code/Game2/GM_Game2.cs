@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GM_Game2 : MonoBehaviour {
@@ -9,7 +7,6 @@ public class GM_Game2 : MonoBehaviour {
 	[SerializeField] private GameObject m_Item;
 	
 	private Vector3 m_MouseScreenPosition;
-	private Vector3 m_MouseWorldPosition;
 
 	public bool m_OnMouse = false;
 

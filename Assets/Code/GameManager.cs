@@ -23,7 +23,6 @@ public class GameManager : MonoBehaviour {
 	[SerializeField] private Chrono m_Chrono;
 	[SerializeField] private Image m_Image;
 	[Space, Header("End Screen Settings")]
-	[SerializeField] private GameObject m_EndScreen;
 	[SerializeField] private GameObject[] m_Screens;
 	[Space, Header("Sounds Settings")]
 	[SerializeField] private AudioSource m_Pop;
@@ -31,9 +30,6 @@ public class GameManager : MonoBehaviour {
 	[SerializeField] private AudioSource m_Timer;
 	[SerializeField] private AudioSource m_Victory;
 	[SerializeField] private AudioSource m_Defeat;
-
-	private Coroutine m_SpawnCharacterCoroutine;
-	private Coroutine m_IntroCoroutine;
 
 	[HideInInspector] public int m_Cpt = 0;
 
@@ -55,7 +51,7 @@ public class GameManager : MonoBehaviour {
 		toAnim.color = new Color(255, 255, 255, toAnim.color.a + fadeMultiplicator * Time.fixedDeltaTime);
 
 		if(toAnim.color.a < 1) {
-			m_SpawnCharacterCoroutine = StartCoroutine(SpawnAnim(toAnim, fadeMultiplicator, timeBeforeDespawn));
+			StartCoroutine(SpawnAnim(toAnim, fadeMultiplicator, timeBeforeDespawn));
 		}else if(timeBeforeDespawn > 0.0f) {
 			yield return new WaitForSeconds(timeBeforeDespawn);
 			StartCoroutine(DespawnAnim(toAnim, fadeMultiplicator * -1));
@@ -74,13 +70,13 @@ public class GameManager : MonoBehaviour {
 	private IEnumerator PlayIntro() {
 		m_Pop.Play();
 		m_Image.sprite = m_IntroText[m_Cpt];
-		StartCoroutine(SpawnAnim(m_Image, m_FadeMultiplicator, m_PlayRate / 2.0f));
+		StartCoroutine(SpawnAnim(m_Image, m_FadeMultiplicator, m_PlayRate / 1.5f));
 		m_Cpt++;
 
 		yield return new WaitForSeconds(m_PlayRate);
 
 		if(m_Cpt < m_IntroText.Length)
-			m_IntroCoroutine = StartCoroutine(PlayIntro());
+			StartCoroutine(PlayIntro());
 		else {
 			StartCoroutine(DespawnAnim(m_Character, m_FadeMultiplicator * - 1));
 			StartGame();

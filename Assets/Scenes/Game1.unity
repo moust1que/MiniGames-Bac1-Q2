@@ -2769,9 +2769,9 @@ MonoBehaviour:
   m_DefaultCursor: {fileID: 2800000, guid: 4ea28518c903dee42859d5b40482fea0, type: 3}
   m_MenuCursor: {fileID: 2800000, guid: a75cbea6c959cbe42a3139a353351242, type: 3}
   m_Character: {fileID: 1242214819}
-  m_FadeRate: 0.02
-  m_FadeMultiplicator: 1.75
-  m_PlayRate: 4
+  m_FadeRate: 0.01
+  m_FadeMultiplicator: 2
+  m_PlayRate: 3
   m_IntroText:
   - {fileID: 21300000, guid: 581237d1a8c1e7a4f893683deafd82ef, type: 3}
   - {fileID: 21300000, guid: d1d83f186fdf62b469dee68b4e88fc40, type: 3}
@@ -2779,7 +2779,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e9f8414f9ff3e1748a4b9f42b5cf01c3, type: 3}
   m_Chrono: {fileID: 1698481915}
   m_Image: {fileID: 1365400331}
-  m_EndScreen: {fileID: 12563340}
   m_Screens:
   - {fileID: 8177140343294291817}
   - {fileID: 6247604100934807893}
@@ -3452,7 +3451,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 9463.495
+  m_Mass: 2365.8738
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0

@@ -4425,15 +4425,14 @@ MonoBehaviour:
   m_DefaultCursor: {fileID: 2800000, guid: a75cbea6c959cbe42a3139a353351242, type: 3}
   m_MenuCursor: {fileID: 2800000, guid: a75cbea6c959cbe42a3139a353351242, type: 3}
   m_Character: {fileID: 369079560}
-  m_FadeRate: 0.02
-  m_FadeMultiplicator: 1.75
-  m_PlayRate: 4
+  m_FadeRate: 0.01
+  m_FadeMultiplicator: 2
+  m_PlayRate: 3
   m_IntroText:
   - {fileID: 21300000, guid: 264bf86e1b710ae42b1099f3966ec53f, type: 3}
   - {fileID: 21300000, guid: d91f6217845a39a42a544c1b32ce25d2, type: 3}
   m_Chrono: {fileID: 1500068851}
   m_Image: {fileID: 38680007}
-  m_EndScreen: {fileID: 1863709104}
   m_Screens:
   - {fileID: 1670696505}
   - {fileID: 239535452}
